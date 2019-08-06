@@ -94,7 +94,7 @@
 
     "functionWorkerRuntime": "[parameters('runtime')]",
 
-    "functionAppResourceId": "[resourceId('Microsoft.Web/sites/', variables('functionAppName'))]"
+    "functionAppResourceId": "[resourceId('Microsoft.Web/sites/', parameters('appName'))]"
 
   },
 
