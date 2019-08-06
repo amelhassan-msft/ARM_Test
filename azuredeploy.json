@@ -170,7 +170,7 @@
 
                 "[variables('functionAppResourceId')]",
 
-                "[resourceId('Microsoft.Web/Sites/config', parameters('functionAppName'), 'appsettings')]"
+                "[resourceId('Microsoft.Web/Sites/config', variables('functionAppName'), 'appsettings')]"
 
             ],
 
