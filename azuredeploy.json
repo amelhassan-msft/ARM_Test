@@ -92,7 +92,9 @@
 
     "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
 
-    "functionWorkerRuntime": "[parameters('runtime')]"
+    "functionWorkerRuntime": "[parameters('runtime')]",
+
+    "functionAppResourceId": "[resourceId('Microsoft.Web/sites/', parameters('functionAppName'))]"
 
   },
 
@@ -146,23 +148,11 @@
 
             "type": "config",
 
-            "location": "[parameters('webAppLocation')]",
-
-            "properties": {
-
-                "TokenStoreUrl": "[reference(variables('tokenStoreResourceId')).storeUrl]",
-
-                "AzureAd:ClientId": "[parameters('aadAuthNClientId')]",
-
-                "AzureAd:ClientSecret": "[parameters('aadAuthNClientSecret')]"
-
-            },
+            "location": "[parameters('location')]",
 
             "dependsOn": [
 
-                "[variables('webAppResourceId')]",
-
-                "[variables('tokenStoreResourceId')]"
+                "[variables('functionAppResourceId')]"
 
             ]
 
@@ -178,9 +168,9 @@
 
             "dependsOn": [
 
-                "[variables('webAppResourceId')]",
+                "[variables('functionAppResourceId')]",
 
-                "[resourceId('Microsoft.Web/Sites/config', parameters('webAppName'), 'appsettings')]"
+                "[resourceId('Microsoft.Web/Sites/config', parameters('functionAppName'), 'appsettings')]"
 
             ],
 
