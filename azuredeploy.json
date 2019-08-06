@@ -244,7 +244,32 @@
 
       }
 
-    }
+    },
+
+    {
+        "apiVersion": "2018-05-01-preview",
+  
+        "name": "[variables('applicationInsightsName')]",
+  
+        "type": "microsoft.insights/components",
+  
+        "location": "[parameters('location')]",
+  
+        "tags": {
+  
+          "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('applicationInsightsName'))]": "Resource"
+  
+        },
+  
+        "properties": {
+  
+          "ApplicationId": "[variables('applicationInsightsName')]",
+  
+          "Request_Source": "IbizaWebAppExtensionCreate"
+  
+        }
+  
+      }
   ]
 
 }
