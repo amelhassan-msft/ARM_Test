@@ -18,6 +18,22 @@
 
     },
 
+    "webAppGitHubUrl": {
+
+        "type": "string",
+
+        "defaultValue": "https://github.com/navzam/token-store-multi-service-sample"
+
+    },
+
+    "webAppGitHubBranch": {
+
+        "type": "string",
+
+        "defaultValue": "master"
+
+    },
+
     "storageAccountType": {
 
       "type": "string",
@@ -119,6 +135,68 @@
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
 
       ],
+
+      "resources": [
+
+        {
+
+            "apiVersion": "2016-03-01",
+
+            "name": "appsettings",
+
+            "type": "config",
+
+            "location": "[parameters('webAppLocation')]",
+
+            "properties": {
+
+                "TokenStoreUrl": "[reference(variables('tokenStoreResourceId')).storeUrl]",
+
+                "AzureAd:ClientId": "[parameters('aadAuthNClientId')]",
+
+                "AzureAd:ClientSecret": "[parameters('aadAuthNClientSecret')]"
+
+            },
+
+            "dependsOn": [
+
+                "[variables('webAppResourceId')]",
+
+                "[variables('tokenStoreResourceId')]"
+
+            ]
+
+        },
+
+        {
+
+            "apiVersion": "2018-02-01",
+
+            "name": "web",
+
+            "type": "sourcecontrols",
+
+            "dependsOn": [
+
+                "[variables('webAppResourceId')]",
+
+                "[resourceId('Microsoft.Web/Sites/config', parameters('webAppName'), 'appsettings')]"
+
+            ],
+
+            "properties": {
+
+                "RepoUrl": "[parameters('webAppGitHubUrl')]",
+
+                "branch": "[parameters('webAppGitHubBranch')]",
+
+                "IsManualIntegration": true
+
+            }
+
+        }
+
+    ],
 
       "properties": {
 
