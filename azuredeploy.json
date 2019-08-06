@@ -18,7 +18,7 @@
 
     },
 
-    "webAppGitHubUrl": {
+    "repoURL": {
 
         "type": "string",
 
@@ -26,7 +26,7 @@
 
     },
 
-    "webAppGitHubBranch": {
+    "branch": {
 
         "type": "string",
 
@@ -142,51 +142,31 @@
 
         {
 
-            "apiVersion": "2016-03-01",
+          "apiVersion": "2015-08-01",
 
-            "name": "appsettings",
+          "name": "web",
 
-            "type": "config",
+          "type": "sourcecontrols",
 
-            "location": "[parameters('location')]",
+          "dependsOn": [
 
-            "dependsOn": [
+            "[resourceId('Microsoft.Web/Sites', variables('functionAppName'))]"
 
-                "[variables('functionAppResourceId')]"
+          ],
 
-            ]
+          "properties": {
 
-        },
+            "RepoUrl": "[parameters('repoURL')]",
 
-        {
+            "branch": "[parameters('branch')]",
 
-            "apiVersion": "2018-02-01",
+            "IsManualIntegration": true
 
-            "name": "web",
-
-            "type": "sourcecontrols",
-
-            "dependsOn": [
-
-                "[variables('functionAppResourceId')]",
-
-                "[resourceId('Microsoft.Web/Sites/config', variables('functionAppName'), 'appsettings')]"
-
-            ],
-
-            "properties": {
-
-                "RepoUrl": "[parameters('webAppGitHubUrl')]",
-
-                "branch": "[parameters('webAppGitHubBranch')]",
-
-                "IsManualIntegration": true
-
-            }
+          }
 
         }
 
-    ],
+      ],
 
       "properties": {
 
