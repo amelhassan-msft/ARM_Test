@@ -141,29 +141,18 @@
       "resources": [
 
         {
-
           "apiVersion": "2015-08-01",
-
           "name": "web",
-
+          "location": "[parameters('location')]",
           "type": "sourcecontrols",
-
           "dependsOn": [
-
             "[resourceId('Microsoft.Web/Sites', variables('functionAppName'))]"
-
           ],
-
           "properties": {
-
             "RepoUrl": "[parameters('repoURL')]",
-
             "branch": "[parameters('branch')]",
-
-            "IsManualIntegration": true
-
+            "IsManualIntegration": false
           }
-
         }
 
       ],
