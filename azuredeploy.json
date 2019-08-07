@@ -22,7 +22,7 @@
 
         "type": "string",
 
-        "defaultValue": "https://github.com/AzureBytes/functionshttpecho.git"
+        "defaultValue": "https://github.com/amelhassan-msft/sourcecontroltest"
 
     },
 
@@ -54,7 +54,7 @@
 
       "type": "string",
 
-      "defaultValue": "[resourceGroup().location]",
+      "defaultValue": "centralus",
 
       "metadata": {
 
