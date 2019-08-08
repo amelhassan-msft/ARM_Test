@@ -89,7 +89,7 @@
       "location": "[parameters('tokenStoreLocation')]",
       "properties": {
           "authorizedPostRedirectUrls": [
-              "[concat('https://', parameters('webAppName'), '.azurewebsites.net/')]"
+              "[concat('https://', parameters('functionAppName'), '.azurewebsites.net/')]"
           ]
       },
       "dependsOn": [],
@@ -141,7 +141,7 @@
               "resources": []
           }
       ]
-  },
+    },
     
     {
 
