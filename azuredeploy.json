@@ -22,7 +22,7 @@
 
         "type": "string",
 
-        "defaultValue": "https://github.com/amelhassan-msft/sourcecontroltest"
+        "defaultValue": "https://github.com/amelhassan-msft/TokenStoreBindingExampleSourceControl"
 
     },
 
