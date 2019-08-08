@@ -71,13 +71,13 @@
      },
 
      "web-aad-client-id": {
-      "type": "securestring",
+      "type": "string",
       "metadata": {
           "description": "Client id for registered aad app"
         }
      },
      "web-aad-tenant": {
-      "type": "securestring",
+      "type": "string",
       "metadata": {
           "description": "Tenant id for registered aad app"
         }
