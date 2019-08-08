@@ -70,16 +70,17 @@
         }
      },
 
-     "aadClientId": {
+     "googleClient_ID": {
       "type": "string",
       "metadata": {
-          "description": "Client id for registered aad app"
+          "description": "Client id for registered google app. Optional."
         }
      },
-     "aadTenant": {
-      "type": "string",
+
+     "googleClient_Secret": {
+      "type": "securestring",
       "metadata": {
-          "description": "Tenant id for registered aad app"
+          "description": "Client secret for registered google app. Optional."
         }
      }
 
@@ -212,9 +213,27 @@
             "enabled": true,
             "unauthenticatedClientAction": "RedirectToLoginPage",
             "tokenStoreEnabled": true,
-            "defaultProvider": "AzureActiveDirectory",
-            "clientId": "[parameters('aadClientId')]",
-            "issuer": "[concat('https://sts.windows.net/', parameters('aadTenant'), '/')]"
+            "defaultProvider": "Google",
+            "clientId": null,
+            "issuer": null,
+            "allowedExternalRedirectUrls": null,
+            "clientSecret": null,
+            "clientSecretCertificateThumbprint": null,
+            "issuer": null,
+            "allowedAudiences": null,
+            "additionalLoginParams": null,
+            "isAadAutoProvisioned": false,
+            "googleClientId": "[parameters('googleClient_Id')]",
+            "googleClientSecret": "[parameters('googleClient_Secret')]",
+            "googleOAuthScopes": null,
+            "facebookAppId": null,
+            "facebookAppSecret": null,
+            "facebookOAuthScopes": null,
+            "twitterConsumerKey": null,
+            "twitterConsumerSecret": null,
+            "microsoftAccountClientId": null,
+            "microsoftAccountClientSecret": null,
+            "microsoftAccountOAuthScopes": null 
           }
         }
       ],
