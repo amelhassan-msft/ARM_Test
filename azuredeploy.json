@@ -70,13 +70,13 @@
         }
      },
 
-     "web-aad-client-id": {
+     "aadClientId": {
       "type": "string",
       "metadata": {
           "description": "Client id for registered aad app"
         }
      },
-     "web-aad-tenant": {
+     "aadTenant": {
       "type": "string",
       "metadata": {
           "description": "Tenant id for registered aad app"
@@ -198,23 +198,28 @@
             "branch": "[parameters('branch')]",
             "IsManualIntegration": false
           }
+        },
+
+        {
+          "name": "[concat(variables('functionAppName'), '/authsettings')]",
+          "apiVersion": "2016-08-01",
+          "type": "Microsoft.Web/sites/config",
+          "location": "[parameters('generalLocation')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]"
+          ],
+          "properties": {
+            "enabled": true,
+            "unauthenticatedClientAction": "RedirectToLoginPage",
+            "tokenStoreEnabled": true,
+            "defaultProvider": "AzureActiveDirectory",
+            "clientId": "[parameters('aadClientId')]",
+            "issuer": "[concat('https://sts.windows.net/', parameters('aadTenant'), '/')]"
+          }
         }
       ],
 
       "properties": {
-
-        "siteAuthEnabled": true,
-        "siteAuthSettings": {
-          "enabled": true,
-          "unauthenticatedClientAction": "RedirectToLoginPage",
-          "tokenStoreEnabled": true,
-          "defaultProvider": "AzureActiveDirectory",
-          "clientId": "[parameters('web-aad-client-id')]",
-          "issuer": "[concat('https://sts.windows.net/', parameters('web-aad-tenant'))]",
-          "allowedAudiences": [
-              "[concat('https://', variables('functionAppName'), '.azurewebsites.net')]"
-          ]
-      },
         "siteConfig": {
           "appSettings": [
             {
