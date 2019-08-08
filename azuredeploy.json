@@ -198,6 +198,24 @@
             "branch": "[parameters('branch')]",
             "IsManualIntegration": false
           }
+        },
+
+        {
+          "name": "[concat(variables('functionAppName'), '/authsettings')]",
+          "apiVersion": "2016-08-01",
+          "type": "Microsoft.Web/sites/config",
+          "location": "[parameters('generalLocation')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]"
+          ],
+          "properties": {
+            "enabled": true,
+            "unauthenticatedClientAction": "RedirectToLoginPage",
+            "tokenStoreEnabled": true,
+            "defaultProvider": "AzureActiveDirectory",
+            "clientId": "[parameters('aadClientId')]",
+            "issuer": "[concat('https://sts.windows.net/', parameters('aadTenant'), '/')]"
+          }
         }
       ],
 
