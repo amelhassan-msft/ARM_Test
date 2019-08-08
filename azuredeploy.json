@@ -203,7 +203,7 @@
         {
           "name": "[concat(variables('functionAppName'), '/authsettings')]",
           "apiVersion": "2016-08-01",
-          "type": "config",
+          "type": "/config",
           "location": "[parameters('generalLocation')]",
           "dependsOn": [
             "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]"
