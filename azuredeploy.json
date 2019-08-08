@@ -68,7 +68,21 @@
       "metadata": {
           "description": "App secret for the registered Dropbox application"
         }
+     },
+
+     "web-aad-client-id": {
+      "type": "securestring",
+      "metadata": {
+          "description": "Client id for registered aad app"
+        }
+     },
+     "web-aad-tenant": {
+      "type": "securestring",
+      "metadata": {
+          "description": "Tenant id for registered aad app"
+        }
      }
+
   },
 
   "variables": {
@@ -188,6 +202,18 @@
       ],
 
       "properties": {
+
+        "siteAuthSettings": {
+          "enabled": true,
+          "unauthenticatedClientAction": "RedirectToLoginPage",
+          "tokenStoreEnabled": true,
+          "defaultProvider": "AzureActiveDirectory",
+          "clientId": "[parameters('web-aad-client-id')]",
+          "issuer": "[concat('https://sts.windows.net/', parameters('web-aad-tenant'))]",
+          "allowedAudiences": [
+              "[concat('https://', variables('functionAppName'), '.azurewebsites.net')]"
+          ]
+      },
         "siteConfig": {
           "appSettings": [
             {
