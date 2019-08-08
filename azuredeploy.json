@@ -138,7 +138,7 @@
 
               "properties": {
                   "displayName": "Dropbox Service",
-                  "tokenParameters": {},
+                  "tokenParameters": { },
                   "authentication": {
                       "managedIdentityProvider": {
                           "name": "dropbox"
