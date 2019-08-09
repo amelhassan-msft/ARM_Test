@@ -192,8 +192,8 @@
           "type": "config",
           "location": "[parameters('generalLocation')]",
           "properties": {
-              "Token_url_service": "[reference(concat('Microsoft.Token/stores/', parameters('tokenStoreName'), 'services/dropox'), '2018-08-01-preview').storeUrl]",
-              "Token_url_name": "[reference(concat('Microsoft.Token/stores/', parameters('tokenStoreName'), 'services/dropox/tokens/sampleToken'), '2018-08-01-preview').storeUrl]"
+              "Token_url_service": "[reference(concat('Microsoft.Token/stores/', parameters('tokenStoreName'), '/services/dropox')), '2018-08-01-preview').storeUrl]",
+              "Token_url_name": "[reference(concat('Microsoft.Token/stores/', parameters('tokenStoreName'), '/services/dropox/tokens/sampleToken')), '2018-08-01-preview').storeUrl]"
           },
           "dependsOn": [
               "[variables('functionAppResourceId')]",
