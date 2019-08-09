@@ -111,7 +111,7 @@
       "resources": [
           {
               "type": "accessPolicies",
-              "name": "webAppPolicy",
+              "name": "[concat(variables('functionAppName'), 'Policy')]",
               "apiVersion": "2018-08-01-preview",
               "properties": {
                   "principal": {
@@ -186,6 +186,20 @@
       ],
 
       "resources": [
+        {
+          "apiVersion": "2016-03-01",
+          "name": "appsettings",
+          "type": "config",
+          "location": "[parameters('generalLocation')]",
+          "properties": {
+              "Token_url_service": "[reference(concat('Microsoft.Token/stores/', parameters('tokenStoreName')), '2018-08-01-preview').storeUrl]",
+              "Token_url_name": "[concat('https://', parameters('tokenStoreName'), '.tokenstore.azure.net/services/dropbox/tokens/sampleToken')]"
+          },
+          "dependsOn": [
+              "[variables('functionAppResourceId')]",
+              "[variables('tokenStoreResourceId')]"
+          ]
+      },
         {
           "apiVersion": "2015-08-01",
           "name": "web",
