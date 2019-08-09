@@ -192,8 +192,9 @@
           "type": "config",
           "location": "[parameters('generalLocation')]",
           "properties": {
-              "Token_url_service": "[concat('https://', parameters('tokenStoreName'), '.tokenstore.azure.net/services/dropox')]",
-              "Token_url_name": "[concat('https://', parameters('tokenStoreName'), '.tokenstore.azure.net/services/dropox/tokens/sampleToken')]"
+              "Token_url_service": "[concat('https://',parameters('tokenStoreName'),'.tokenstore.azure.net/services/dropox')]",
+              "Token_url_name": "[concat('https://',parameters('tokenStoreName'),'.tokenstore.azure.net/services/dropox/tokens/sampleToken')]",
+              "TokenStoreUrl": "[reference(variables('tokenStoreResourceId')).storeUrl]"
           },
           "dependsOn": [
               "[variables('functionAppResourceId')]",
