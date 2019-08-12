@@ -157,7 +157,7 @@
                   "type": "tokens",
                   "name": "sampleToken",
                   "apiVersion": "2018-08-01-preview",
-                  "dependsOn": [ ],
+                  "dependsOn": [ "[resourceId('services', 'dropbox')]" ],
                   "properties": {
                     "displayName": "sampleToken",
                     "name": "sampleToken"
