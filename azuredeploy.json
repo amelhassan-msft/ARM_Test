@@ -93,7 +93,8 @@
     "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
     "functionWorkerRuntime": "dotnet",
     "functionAppResourceId": "[resourceId('Microsoft.Web/sites/', parameters('appName'))]", 
-    "tokenStoreResourceId": "[resourceId('Microsoft.Token/stores/', parameters('tokenStoreName'))]"
+    "tokenStoreResourceId": "[resourceId('Microsoft.Token/stores/', parameters('tokenStoreName'))]",
+    "serviceName": "dropbox"
   },
 
   "resources": [
@@ -133,7 +134,7 @@
 
           {
               "type": "services",
-              "name": "dropbox",
+              "name": "[variables('serviceName')]",
               "apiVersion": "2018-08-01-preview",
 
               "properties": {
@@ -157,6 +158,9 @@
                   "type": "tokens",
                   "name": "sampleToken",
                   "apiVersion": "2018-08-01-preview",
+                  "dependsOn": [
+                    "[reference(variables('serviceName'))]"
+                  ],
                   "properties": {
                     "displayName": "sampleToken",
                     "name": "sampleToken"
