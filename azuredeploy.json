@@ -162,10 +162,7 @@
                   "properties": {
                     "displayName": "sampleToken",
                     "name": "sampleToken"
-                   },
-                   "dependsOn": [
-                    "[variables('tokenStoreResourceId')]"
-                    ]
+                   }
                 }
                 
               ]
