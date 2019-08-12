@@ -149,7 +149,6 @@
                       }
                   }
               },
-
               "dependsOn": [
                   "[variables('tokenStoreResourceId')]"
               ],
@@ -158,7 +157,7 @@
                   "type": "tokens",
                   "name": "sampleToken",
                   "apiVersion": "2018-08-01-preview",
-
+                  "dependsOn": [ ],
                   "properties": {
                     "displayName": "sampleToken",
                     "name": "sampleToken"
