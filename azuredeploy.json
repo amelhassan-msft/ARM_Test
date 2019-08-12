@@ -157,7 +157,6 @@
                   "type": "tokens",
                   "name": "sampleToken",
                   "apiVersion": "2018-08-01-preview",
-                  "dependsOn": [ "[resourceId('Microsoft.Token/stores/services', 'dropbox')]" ],
                   "properties": {
                     "displayName": "sampleToken",
                     "name": "sampleToken"
