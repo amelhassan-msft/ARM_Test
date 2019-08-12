@@ -156,12 +156,15 @@
               "resources": [
                 {
                   "type": "tokens",
-                  "displayName": "sampleToken",
                   "name": "sampleToken",
                   "apiVersion": "2018-08-01-preview",
                   "dependsOn": [
                     "[reference(variables('serviceName'))]"
-                  ]
+                  ],
+                  "properties": {
+                    "displayName": "sampleToken",
+                    "name": "sampleToken"
+                   }
                 }
                 
               ]
